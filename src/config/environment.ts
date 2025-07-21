@@ -8,14 +8,17 @@ const EnvSchema = Type.Object({
     ]),
     PORT: Type.Number({ default: 3000 }),
     HOST: Type.String({ default: '0.0.0.0' }),
-    LOG_LEVEL: Type.Union([
-        Type.Literal('fatal'),
-        Type.Literal('error'),
-        Type.Literal('warn'),
-        Type.Literal('info'),
-        Type.Literal('debug'),
-        Type.Literal('trace')
-    ], { default: 'info' }),
+    LOG_LEVEL: Type.Union(
+        [
+            Type.Literal('fatal'),
+            Type.Literal('error'),
+            Type.Literal('warn'),
+            Type.Literal('info'),
+            Type.Literal('debug'),
+            Type.Literal('trace')
+        ],
+        { default: 'info' }
+    ),
     API_PREFIX: Type.String({ default: '/api/v1' }),
     DATABASE_URL: Type.String(),
     JWT_SECRET: Type.String(),

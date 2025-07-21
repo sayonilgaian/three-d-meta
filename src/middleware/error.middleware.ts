@@ -12,7 +12,7 @@ export async function errorHandler(
 
     // Validation errors
     if (error.validation) {
-        const validationErrors = error.validation.map(err =>
+        const validationErrors = error.validation.map((err) =>
             `${err.instancePath} ${err.message}`.trim()
         )
         return ResponseUtil.badRequest(reply, 'Validation failed', validationErrors)

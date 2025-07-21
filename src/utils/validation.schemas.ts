@@ -17,9 +17,7 @@ export const CreateUserSchema = Type.Object({
     password: Type.String({ minLength: 8, maxLength: 128 })
 })
 
-export const UpdateUserSchema = Type.Partial(
-    Type.Omit(CreateUserSchema, ['password'])
-)
+export const UpdateUserSchema = Type.Partial(Type.Omit(CreateUserSchema, ['password']))
 
 export const UserResponseSchema = Type.Object({
     id: Type.String(),
