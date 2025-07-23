@@ -63,7 +63,7 @@ export class JsonToGltfService {
     private static readonly CHUNK_TYPE_JSON = 0x4E4F534A; // "JSON" in ASCII
     private static readonly CHUNK_TYPE_BIN = 0x004E4942; // "BIN\0" in ASCII
 
-    async convertJsonToGltf(jsonConfig: JsonConfig): Promise<{ data: Buffer | string; format: string }> {
+    static async convertJsonToGltf(jsonConfig: JsonConfig): Promise<{ data: Buffer | string; format: string }> {
         const format = jsonConfig.format || 'glb';
         const gltfDoc = this.createGltfDocument(jsonConfig);
 
@@ -75,7 +75,7 @@ export class JsonToGltfService {
         }
     }
 
-    private createGlbBuffer(gltfDoc: GltfDocument): Buffer {
+    private static createGlbBuffer(gltfDoc: GltfDocument): Buffer {
         // Extract binary data from the buffer
         const buffer = gltfDoc.buffers[0];
         const binaryData = Buffer.from(buffer.uri!.split(',')[1], 'base64');
@@ -138,7 +138,7 @@ export class JsonToGltfService {
         return glbBuffer;
     }
 
-    private createGltfDocument(jsonConfig: JsonConfig): GltfDocument {
+    private static createGltfDocument(jsonConfig: JsonConfig): GltfDocument {
         const meshes = jsonConfig.meshes;
         const scale = jsonConfig.scale || 1.0;
 
@@ -307,7 +307,7 @@ export class JsonToGltfService {
         return gltfDoc;
     }
 
-    private processMesh(mesh: MeshData, scale: number, center?: boolean): MeshData {
+    private static processMesh(mesh: MeshData, scale: number, center?: boolean): MeshData {
         let vertices = [...mesh.vertices];
 
         // Apply scaling
@@ -344,7 +344,7 @@ export class JsonToGltfService {
         };
     }
 
-    private calculateBounds(data: number[], stride: number): { min: number[], max: number[] } {
+    private static calculateBounds(data: number[], stride: number): { min: number[], max: number[] } {
         const min = new Array(stride).fill(Infinity);
         const max = new Array(stride).fill(-Infinity);
 
@@ -358,7 +358,7 @@ export class JsonToGltfService {
         return { min, max };
     }
 
-    private generateNormals(vertices: number[], indices: number[]): number[] {
+    private static generateNormals(vertices: number[], indices: number[]): number[] {
         const normals = new Array(vertices.length).fill(0);
 
         // Calculate face normals and accumulate vertex normals

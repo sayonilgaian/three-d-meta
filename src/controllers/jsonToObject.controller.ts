@@ -31,22 +31,10 @@ export class JsonToObjectController {
                 }
             }
 
-            const service = new JsonToGltfService();
-            const result = await service.convertJsonToGltf(jsonConfig);
+            const result = await JsonToGltfService.convertJsonToGltf(jsonConfig);
 
             // Set appropriate headers for file download
             const format = jsonConfig.format || 'glb';
-            const filename = `model.${format}`;
-
-            reply.header('Content-Disposition', `attachment; filename="${filename}"`);
-
-            // if (format === 'glb') {
-            //     reply.header('Content-Type', 'model/gltf-binary');
-            //     return reply.send(result.data);
-            // } else {
-            //     reply.header('Content-Type', 'model/gltf+json');
-            //     return reply.send(result.data);
-            // }
 
             if (Buffer.isBuffer(result.data)) {
                 const uploadToCmsData = await uploadToCms(result.data)
