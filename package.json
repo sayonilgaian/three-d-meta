@@ -27,16 +27,22 @@
     "@fastify/swagger": "^9.5.1",
     "@fastify/swagger-ui": "^5.2.3",
     "@sinclair/typebox": "^0.34.38",
+    "axios": "^1.11.0",
+    "canvas": "^3.1.2",
     "dotenv": "^17.2.0",
     "fastify": "^5.4.0",
+    "form-data": "^4.0.4",
     "http-status-codes": "^2.3.0",
     "pino": "^9.7.0",
-    "pino-pretty": "^13.0.0"
+    "pino-pretty": "^13.0.0",
+    "three": "^0.178.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.15",
     "@types/supertest": "^6.0.3",
+    "@types/three": "^0.178.1",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
     "@typescript-eslint/parser": "^8.37.0",
     "eslint": "^9.31.0",
