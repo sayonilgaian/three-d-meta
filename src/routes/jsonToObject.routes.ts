@@ -1,5 +1,5 @@
-import { FastifyInstance } from 'fastify';
-import { JsonToObjectController } from '@/controllers/jsonToObject.controller';
+import { FastifyInstance } from 'fastify'
+import { JsonToObjectController } from '@/controllers/jsonToObject.controller'
 
 export async function jsonToObjectRoutes(fastify: FastifyInstance) {
     fastify.post(
@@ -58,7 +58,7 @@ export async function jsonToObjectRoutes(fastify: FastifyInstance) {
                 },
                 response: {
                     200: {
-                        description: 'Successfully generated 3D file',
+                        description: 'Successfully generated 3D file'
                         // Note: Response will be binary for GLB or JSON string for GLTF
                     },
                     400: {
@@ -81,5 +81,5 @@ export async function jsonToObjectRoutes(fastify: FastifyInstance) {
             }
         },
         JsonToObjectController.createObjectFromJson
-    );
+    )
 }
