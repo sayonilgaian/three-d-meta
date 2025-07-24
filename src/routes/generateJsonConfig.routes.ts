@@ -49,8 +49,8 @@ export async function generateJsonRoutes(fastify: FastifyInstance) {
                 body: {
                     type: 'object',
                     properties: {
-                        'prompt': { type: 'string' }
-                    },
+                        prompt: { type: 'string' }
+                    }
                 },
                 response: {
                     200: {

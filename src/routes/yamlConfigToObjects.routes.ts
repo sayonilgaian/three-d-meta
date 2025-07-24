@@ -40,7 +40,7 @@ export async function yamlToObjectRoutes(fastify: FastifyInstance) {
                         }
                     }
                 }
-            },
+            }
         },
         YamlToObjectController.yamlToObject
     )

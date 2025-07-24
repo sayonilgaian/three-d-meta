@@ -61,7 +61,6 @@ export class JsonToGltfService {
         const gltfDoc = this.createGltfDocument(jsonConfig)
         const glbBuffer = this.createGlbBuffer(gltfDoc)
         return { data: glbBuffer, format: 'glb' }
-
     }
 
     private static createGlbBuffer(gltfDoc: GltfDocument): Buffer {
@@ -306,11 +305,11 @@ export class JsonToGltfService {
                 edge1[0] * edge2[1] - edge1[1] * edge2[0]
             ]
 
-                ;[i1, i2, i3].forEach((idx) => {
-                    normals[idx] += normal[0]
-                    normals[idx + 1] += normal[1]
-                    normals[idx + 2] += normal[2]
-                })
+            ;[i1, i2, i3].forEach((idx) => {
+                normals[idx] += normal[0]
+                normals[idx + 1] += normal[1]
+                normals[idx + 2] += normal[2]
+            })
         }
 
         for (let i = 0; i < normals.length; i += 3) {
