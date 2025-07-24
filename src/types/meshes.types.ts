@@ -9,7 +9,6 @@ export interface MeshData {
 
 export interface JsonConfig {
     meshes: MeshData[]
-    format?: 'gltf' | 'glb' // Output format preference
     scale?: number // Scale factor for the model
     center?: boolean // Whether to center the model
 }

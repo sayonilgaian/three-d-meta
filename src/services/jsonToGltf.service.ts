@@ -58,15 +58,10 @@ export class JsonToGltfService {
     static async convertJsonToGltf(
         jsonConfig: JsonConfig
     ): Promise<{ data: Buffer | string; format: string }> {
-        const format = jsonConfig.format || 'glb'
         const gltfDoc = this.createGltfDocument(jsonConfig)
+        const glbBuffer = this.createGlbBuffer(gltfDoc)
+        return { data: glbBuffer, format: 'glb' }
 
-        if (format === 'glb') {
-            const glbBuffer = this.createGlbBuffer(gltfDoc)
-            return { data: glbBuffer, format: 'glb' }
-        } else {
-            return { data: JSON.stringify(gltfDoc, null, 2), format: 'gltf' }
-        }
     }
 
     private static createGlbBuffer(gltfDoc: GltfDocument): Buffer {
@@ -311,11 +306,11 @@ export class JsonToGltfService {
                 edge1[0] * edge2[1] - edge1[1] * edge2[0]
             ]
 
-            ;[i1, i2, i3].forEach((idx) => {
-                normals[idx] += normal[0]
-                normals[idx + 1] += normal[1]
-                normals[idx + 2] += normal[2]
-            })
+                ;[i1, i2, i3].forEach((idx) => {
+                    normals[idx] += normal[0]
+                    normals[idx + 1] += normal[1]
+                    normals[idx + 2] += normal[2]
+                })
         }
 
         for (let i = 0; i < normals.length; i += 3) {
