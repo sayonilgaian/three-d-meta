@@ -3,11 +3,11 @@ import { JsonToObjectController } from '@/controllers/jsonToObject.controller'
 
 export async function jsonToObjectRoutes(fastify: FastifyInstance) {
     fastify.post(
-        '/json-to-object',
+        '/json-to-gltf',
         {
             schema: {
                 description: 'Convert JSON mesh data to GLTF/GLB 3D object',
-                tags: ['3d', 'json', 'gltf'],
+                tags: ['json-to-object'],
                 body: {
                     type: 'object',
                     properties: {
@@ -44,10 +44,6 @@ export async function jsonToObjectRoutes(fastify: FastifyInstance) {
                                         required: ['vertices', 'indices']
                                     }
                                 },
-                                format: {
-                                    type: 'string',
-                                    enum: ['gltf', 'glb']
-                                },
                                 scale: { type: 'number' },
                                 center: { type: 'boolean' }
                             },
@@ -59,7 +55,6 @@ export async function jsonToObjectRoutes(fastify: FastifyInstance) {
                 response: {
                     200: {
                         description: 'Successfully generated 3D file'
-                        // Note: Response will be binary for GLB or JSON string for GLTF
                     },
                     400: {
                         type: 'object',

@@ -57,9 +57,6 @@ export class JsonToObjectController {
 
             const result = await JsonToGltfService.convertJsonToGltf(jsonConfig)
 
-            // Set appropriate headers for file download
-            const format = jsonConfig.format || 'glb'
-
             if (Buffer.isBuffer(result.data)) {
                 const uploadToCmsData = await uploadToCms(result.data)
                 if (uploadToCmsData.success) {

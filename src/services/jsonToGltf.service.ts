@@ -58,15 +58,9 @@ export class JsonToGltfService {
     static async convertJsonToGltf(
         jsonConfig: JsonConfig
     ): Promise<{ data: Buffer | string; format: string }> {
-        const format = jsonConfig.format || 'glb'
         const gltfDoc = this.createGltfDocument(jsonConfig)
-
-        if (format === 'glb') {
-            const glbBuffer = this.createGlbBuffer(gltfDoc)
-            return { data: glbBuffer, format: 'glb' }
-        } else {
-            return { data: JSON.stringify(gltfDoc, null, 2), format: 'gltf' }
-        }
+        const glbBuffer = this.createGlbBuffer(gltfDoc)
+        return { data: glbBuffer, format: 'glb' }
     }
 
     private static createGlbBuffer(gltfDoc: GltfDocument): Buffer {
